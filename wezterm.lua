@@ -69,7 +69,11 @@ end)
 
 wezterm.on("update-right-status", function(window, pane)
     window:set_right_status(wezterm.format {
-        {Text = pane:get_current_working_dir()}
+        {
+			Text = string.gsub(
+				pane:get_foreground_process_name(), "(.*[/\\])(.*)", "%2"
+			)
+		}
     })
 end)
 
