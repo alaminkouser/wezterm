@@ -8,26 +8,18 @@ config.font_size = 18.0
 config.use_fancy_tab_bar = false
 config.adjust_window_size_when_changing_font_size = false
 config.font = wezterm.font "NotoMonoNerdFont"
+config.show_tab_index_in_tab_bar = false
 config.default_cwd = "."
 config.initial_cols = 120
 config.initial_rows = 24
 config.default_cursor_style = "BlinkingBar"
 config.tab_max_width = 16
+config.use_resize_increments = true
 config.window_padding = {
 	left   = 0,
 	right  = 0,
 	top    = 0,
 	bottom = 0,
-}
-config.window_frame = {
-	border_left_width = "2pt",
-	border_right_width = "2pt",
-	border_bottom_height = "2pt",
-	border_top_height = "2pt",
-	border_left_color = "grey",
-	border_right_color = "grey",
-	border_bottom_color = "grey",
-	border_top_color = "grey",
 }
 config.colors = {
 	cursor_bg = "#ffffff",
@@ -70,9 +62,8 @@ end)
 wezterm.on("update-right-status", function(window, pane)
     window:set_right_status(wezterm.format {
         {
-			Text = string.gsub(
-				pane:get_foreground_process_name(), "(.*[/\\])(.*)", "%2"
-			)
+			Text = pane:get_foreground_process_name():match("[\\/]([^\\/]-)$")
+				or pane:get_foreground_process_name()
 		}
     })
 end)
