@@ -7,7 +7,6 @@ config.window_decorations = "RESIZE"
 config.font_size = 18.0
 config.use_fancy_tab_bar = false
 config.adjust_window_size_when_changing_font_size = false
-config.font = wezterm.font "NotoMonoNerdFont"
 config.show_tab_index_in_tab_bar = false
 config.default_cwd = "."
 config.initial_cols = 120
