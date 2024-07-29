@@ -33,45 +33,6 @@ config.colors = {
 	}
 }
 
-wezterm.on("update-status", function(window)
-	local overrides = window:get_config_overrides() or {}
-	if window:get_dimensions().is_full_screen then
-		overrides.window_frame = {
-			border_left_width = "0pt",
-			border_right_width = "0pt",
-			border_bottom_height = "0pt",
-			border_top_height = "0pt",
-			border_left_color = "black",
-			border_right_color = "black",
-			border_bottom_color = "black",
-			border_top_color = "black",
-		}
-	elseif window:is_focused() then
-		overrides.window_frame = {
-			border_left_width = "2pt",
-			border_right_width = "2pt",
-			border_bottom_height = "2pt",
-			border_top_height = "2pt",
-			border_left_color = "grey",
-			border_right_color = "grey",
-			border_bottom_color = "grey",
-			border_top_color = "grey",
-		}
-	else
-		overrides.window_frame = {
-			border_left_width = "2pt",
-			border_right_width = "2pt",
-			border_bottom_height = "2pt",
-			border_top_height = "2pt",
-			border_left_color = "black",
-			border_right_color = "black",
-			border_bottom_color = "black",
-			border_top_color = "black",
-		}
-	end
-	window:set_config_overrides(overrides)
-end)
-
 wezterm.on("update-right-status", function(window, pane)
 	window:set_right_status(wezterm.format {
         {
@@ -85,7 +46,13 @@ config.keys = {
 	{
 		key = "F11",
 		action = wezterm.action.ToggleFullScreen
+	},
+	{
+		key = "t",
+		mods = "ALT",
+		action = wezterm.action.SpawnTab "CurrentPaneDomain"
 	}
 }
+
 
 return config
