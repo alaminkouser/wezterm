@@ -46,11 +46,6 @@ config.keys = {
 	{
 		key = "F11",
 		action = wezterm.action.ToggleFullScreen
-	},
-	{
-		key = "t",
-		mods = "ALT",
-		action = wezterm.action.SpawnTab "CurrentPaneDomain"
 	}
 }
 
